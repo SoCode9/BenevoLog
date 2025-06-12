@@ -35,6 +35,9 @@ class Benevol
     #[ORM\Column(length: 16)]
     private ?string $private_phone = null;
 
+    #[ORM\OneToOne(mappedBy: 'benevol', cascade: ['persist', 'remove'])]
+    private ?EmergencyContact $emergencyContact = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,23 @@ class Benevol
     public function setPrivatePhone(string $private_phone): static
     {
         $this->private_phone = $private_phone;
+
+        return $this;
+    }
+
+    public function getEmergencyContact(): ?EmergencyContact
+    {
+        return $this->emergencyContact;
+    }
+
+    public function setEmergencyContact(EmergencyContact $emergencyContact): static
+    {
+        // set the owning side of the relation if necessary
+        if ($emergencyContact->getBenevol() !== $this) {
+            $emergencyContact->setBenevol($this);
+        }
+
+        $this->emergencyContact = $emergencyContact;
 
         return $this;
     }

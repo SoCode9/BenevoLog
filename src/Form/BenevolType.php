@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Benevol;
+use App\Form\EmergencyContactType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class BenevolType extends AbstractType
 {
@@ -19,6 +21,7 @@ class BenevolType extends AbstractType
             ->add('email')
             ->add('address')
             ->add('private_phone')
+            ->add('emergencyContact', EmergencyContactType::class)/*  */
         ;
     }
 

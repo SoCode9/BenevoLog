@@ -22,6 +22,10 @@ class EmergencyContact
     #[ORM\Column(length: 16, nullable: true)]
     private ?string $phone_number = null;
 
+    #[ORM\OneToOne(inversedBy: 'emergencyContact', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Benevol $benevol = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +63,18 @@ class EmergencyContact
     public function setPhoneNumber(?string $phone_number): static
     {
         $this->phone_number = $phone_number;
+
+        return $this;
+    }
+
+    public function getBenevol(): ?Benevol
+    {
+        return $this->benevol;
+    }
+
+    public function setBenevol(Benevol $benevol): static
+    {
+        $this->benevol = $benevol;
 
         return $this;
     }
