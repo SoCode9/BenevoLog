@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Benevol index{% endblock %}
+
+{% block body %}
+    <h1>Benevol index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+                <th>Gender</th>
+                <th>Birth_date</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Private_phone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for benevol in benevols %}
+            <tr>
+                <td>{{ benevol.id }}</td>
+                <td>{{ benevol.firstName }}</td>
+                <td>{{ benevol.lastName }}</td>
+                <td>{{ benevol.gender }}</td>
+                <td>{{ benevol.birthDate ? benevol.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ benevol.email }}</td>
+                <td>{{ benevol.address }}</td>
+                <td>{{ benevol.privatePhone }}</td>
+                <td>
+                    <a href="{{ path('app_benevol_show', {'id': benevol.id}) }}">show</a>
+                    <a href="{{ path('app_benevol_edit', {'id': benevol.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_benevol_new') }}">Create new</a>
+{% endblock %}
