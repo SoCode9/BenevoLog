@@ -1,4 +1,90 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="step step-1">
+	<h2>Informations personnelles</h2>
+
+	<div class="mb-3">
+		{{form_row(form.first_name, {
+        'label': 'Prénom',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+	</div>
+	<div class="mb-3">
+		{{ form_row(form.last_name, {
+        'label': 'Nom de famille',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+	</div>
+	<div class="mb-3">
+		{{ form_row(form.gender, {
+        'label': 'Sexe',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+	</div>
+	<div class="mb-3">
+		{{ form_row(form.birth_date, {
+        'label': 'Date de naissance',
+        'label_attr': {'class': 'form-label'},
+        'attr': {'class': 'form-control'}
+    }) }}
+	</div>
+	<div class="mb-3">
+		{{ form_row(form.email, {
+        'label': 'Email',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+	</div>
+	<div class="mb-3">
+		{{ form_row(form.address, {
+        'label': 'Adresse',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+	</div>
+	<div class="mb-3">
+		{{ form_row(form.private_phone, {
+        'label': 'Téléphone privé',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+	</div>
+
+	<button type="submit" class="btn btn-primary">{{ button_label|default('Suivant/enregistrer') }}</button>
+	<!-- Enlever le type submit-->
+
+</div>
+
+<div class="step step-2 d-none">
+	<h2>Contact d'urgence</h2>
+
+	<div class="mb-3">
+		{{ form_row(form.emergencyContact.name, {
+        'label': 'Contact d\'urgence',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+    </div>
+    <div class="mb-3">
+        {{ form_row(form.emergencyContact.relationship, {
+        'label': 'Relation',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+    </div>
+    <div class="mb-3">
+        {{ form_row(form.emergencyContact.phone_number, {
+        'label': 'Numéro de téléphone',
+        'label_attr': {'class': 'form-label'}, 
+        'attr': {'class': 'form-control'}
+    })}}
+    </div>
+   
+    <button type="button" class="btn btn-secondary prev">Précédent</button>
+    <button class="btn btn-primary">{{ button_label|default('Suivant') }}</button>
+</div>
+
+
 {{ form_end(form) }}

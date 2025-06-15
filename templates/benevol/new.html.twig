@@ -1,11 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Benevol{% endblock %}
+{% block title %}Nouveau bénévole
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Benevol</h1>
+	<div class="row header">
+		<div class="col-1 text-end">
+			<button id="photo-edit" class="btn btn-secondary">
+				<i class="bi bi-pencil-fill"></i>
+			</button>
+		</div>
+		<div class="col-2 text-center img align-content-center" style="height: 100%; display: flex; ">
+			<i class="bi bi-person-fill fs-3 align-content-center img-circle"></i>
+		</div>
+		<div class="col-7">
+			<h1 class='nav-item'>Nouveau bénévole</h1>
+		</div>
+		<div class="col-2">
+			bouton
+		</div>
 
-    {{ include('benevol/_form.html.twig') }}
+	</div>
 
-    <a href="{{ path('app_benevol_index') }}">back to list</a>
+	<form method="post" action="{{ path('app_benevol_new') }}">
+		{{ include('benevol/_form.html.twig') }}
+	</form>
+
+
+	<a href="{{ path('app_benevol_index') }}">back to list</a>
 {% endblock %}
